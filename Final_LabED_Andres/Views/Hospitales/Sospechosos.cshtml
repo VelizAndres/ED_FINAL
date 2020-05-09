@@ -1,0 +1,137 @@
+﻿@model Final_LabED_Andres.Models.mPaciente
+@{
+    ViewBag.Title = "Sospechosos";
+}
+
+<h3>Sospechosos</h3>
+<h2>@ViewBag.Hospital</h2>
+
+<p>
+    <h5>Datos Personales</h5>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Fecha de Nacimiento</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dpi)
+        </th>
+        <th>
+            <label>Residencia</label>
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            @using (Html.BeginForm())
+            {
+                if (Model.Dpi != null)
+                {
+                    DateTime fecha = Model.Fecha_Nac;
+                    string Fecha_text = string.Format("{0: dd/MM/yyyy}", fecha);
+                    ;
+                    <label class="text-info">@Fecha_text</label>
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Dpi)
+        </td>
+        <td>
+            @using (Html.BeginForm())
+            {
+                if (Model.Municipio_resi != "" && Model.Departamento_resi != "")
+                {
+                    string residen = Model.Municipio_resi + ", " + Model.Departamento_resi;
+                    <label class="text-info">@residen</label>
+                }
+            }
+        </td>
+        <td>
+            @using (Html.BeginForm())
+            {
+                if (Model.Nombre != null)
+                {
+                    @Html.ActionLink("Prueba", "Simular", new { dpi = Model.Dpi })
+                }
+            }
+        </td>
+    </tr>
+</table>
+<p> </p>
+<p>
+    <h5>Datos médicos</h5>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Fecha de ingreso</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Infectado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sintomas)
+        </th>
+        <th>
+            <label>Descripción Contagio</label>
+        </th>
+        <th>
+            <label>Hospital</label>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @using (Html.BeginForm())
+            {
+                if (Model.Dpi != null)
+                {
+                    DateTime fecha = Model.Fecha_ingreso;
+                    string Fecha_text = string.Format("{0: dd/MM/yyyy}", fecha);
+                    ;
+                    <label class="text-info">@Fecha_text</label>
+                }
+            }
+        </td>
+        <td>
+            @using (Html.BeginForm())
+            {
+                if (Model.Infectado)
+                {
+                    <label class="text-info">Contagiado</label>
+                }
+                else
+                {
+                    @*<label class="text-info">------</label>*@
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Sintomas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Descripcion_contagio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Name_hosp)
+        </td>
+    </tr>
+</table>
+
+
+<div>
+    @Html.ActionLink("Regresar al menú", "MenuHospital", "Hospitales", new { hosp = ViewBag.Hospital },null)
+</div>

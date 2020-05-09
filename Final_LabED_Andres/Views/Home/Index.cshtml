@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Hospitales:</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <p>@Html.ActionLink("Guatemala", "MenuHospital", "Hospitales", new { hosp = "Guatemala" }, null)</p>
+            <p>@Html.ActionLink("Petén", "MenuHospital", "Hospitales", new { hosp = "Petén" }, null)</p>
+            <p>@Html.ActionLink("Chiquimula", "MenuHospital", "Hospitales", new { hosp = "Chiquimula" }, null)</p>
+            <p>@Html.ActionLink("Escuintla", "MenuHospital", "Hospitales", new { hosp = "Escuintla" }, null)</p>
+            <p>@Html.ActionLink("Quetzaltenango", "MenuHospital", "Hospitales", new { hosp = "Quetzaltenango" }, null)</p>
+        </div>
+            <div class="col-md-4">
+                <p><h4 style="color:red">@ViewBag.Info</h4></p>
+            </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" style="color:white; background-color:dimgray" onclick="location.href='@Url.Action("CrearPaciente", "Hospitales")'"><h4><b>Ingresar paciente &raquo;</b></h4></button>
+        </div>
+        <div class="col-md-4">
+            <button type="button" style="color:white; background-color:dimgray" onclick="location.href='@Url.Action("Estadisticas", "Home")'"><h4><b>Estadísticas &raquo;</b></h4></button>
+        </div>
+        <div class="col-md-4">
+            <button type="button" style="color:white; background-color:dimgray" onclick="location.href='@Url.Action("Busquedas", "Home")'"><h4><b>Búsquedas&raquo;</b></h4></button>
+        </div>
+    </div>
+

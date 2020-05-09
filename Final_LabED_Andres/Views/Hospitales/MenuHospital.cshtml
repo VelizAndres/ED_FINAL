@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "MenuHospital";
+}
+<p></p>
+<p></p>
+<div class="row">
+    <div class="col-md-7">
+     <h1 style="color:darkblue">Hospital de @ViewBag.Hospital</h1>
+     <h3>Menú</h3>
+    </div>
+    <div class="col-md-5">
+     <button type="button" style="color:white; background-color:dimgray" onclick="location.href='@Url.Action("Index", "Home")'"><h4><b>Regresar al menú principal&raquo;</b></h4></button>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm())
+            {
+                string name_h = ViewBag.Hospital;
+                <h3>
+                    <p>@Html.ActionLink("Infectados", "Infectados", new { hosp = name_h })</p>
+                </h3>
+                <h3> <p>@Html.ActionLink("Sospechosos", "Sospechosos", new { hosp = name_h })</p>  </h3>
+                <h3>
+                    <p>@Html.ActionLink("Camillas", "Camas_Hash", new { hosp = name_h })</p>
+                </h3>
+            }
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <p><h4 style="color:red">@ViewBag.Info</h4></p>
+        </div>
+    </div>
+
+

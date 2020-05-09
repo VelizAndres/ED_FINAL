@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Final_LabED_Andres.Models.mPaciente>
+
+@{
+    ViewBag.Title = "Camas_Hash";
+}
+
+<h3>Camillas</h3>
+
+<h2>@ViewBag.Hospital</h2>
+
+
+<div><label style">Camas Vacias:</label> @ViewBag.Vacias</div>
+
+<p>
+    <h5>Datos</h5>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Fecha de Nacimiento</label>
+        </th>
+        <th>
+            <label>Nombre y Apellido</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dpi)
+        </th>
+        <th>
+            <label>Residencia</label>
+        </th>
+        <th>
+            <label>Fecha de ingreso</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Infectado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sintomas)
+        </th>
+        <th>
+            <label>Descripción Contagio</label>
+        </th>
+        <th>
+            <label>Hospital</label>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @using (Html.BeginForm())
+                {
+                    if (item.Dpi != null)
+                    {
+                        DateTime fecha = item.Fecha_Nac;
+                        string Fecha_text = string.Format("{0: dd/MM/yyyy}", fecha);
+                        ;
+                        <label class="text-info">@Fecha_text</label>
+                    }
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm())
+                {
+                    if (item.Nombre != "" && item.Apellido != "")
+                    {
+                        string name = item.Nombre + " " + item.Apellido;
+                        <label class="text-info">@name</label>
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dpi)
+            </td>
+            <td>
+                @using (Html.BeginForm())
+                {
+                    if (item.Municipio_resi != "" && item.Departamento_resi != "")
+                    {
+                        string residen = item.Municipio_resi + ", " + item.Departamento_resi;
+                        <label class="text-info">@residen</label>
+                    }
+                }
+            </td>
+
+            <td>
+                @using (Html.BeginForm())
+                {
+                    if (item.Dpi != null)
+                    {
+                        DateTime fecha = item.Fecha_ingreso;
+                        string Fecha_text = string.Format("{0: dd/MM/yyyy}", fecha);
+                        ;
+                        <label class="text-info">@Fecha_text</label>
+                    }
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm())
+                {
+                    if (item.Infectado)
+                    {
+                        <label class="text-info">Contagiado</label>
+                    }
+                    else
+                    {
+                        @*<label class="text-info">------</label>*@
+                    }
+                }
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Sintomas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion_contagio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_hosp)
+            </td>
+
+            <td>
+                @using (Html.BeginForm())
+                {
+                    if (item.Nombre != null)
+                    {
+                        @Html.ActionLink("Sanado", "Curar", "Hospitales", new { dpi = item.Dpi }, null)
+                    }
+                }
+            </td>
+            <td></td>
+        </tr>
+    }
+</table>
+
+
+<div>
+    @Html.ActionLink("Regresar al menú", "MenuHospital", "Hospitales", new { hosp = ViewBag.Hospital }, null)
+</div>

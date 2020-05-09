@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Final_LabED_Andres.Models.mPaciente>
+
+@{
+    ViewBag.Title = "All_info";
+}
+
+<h2>All_info</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dpi)
+        </th>
+        <th>Hospital</th>
+      </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dpi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_hosp)
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Regresar al menú principal", "Index", "Home")
+</div>

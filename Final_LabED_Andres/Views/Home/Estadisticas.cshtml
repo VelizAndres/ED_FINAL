@@ -1,0 +1,24 @@
+﻿@model Final_LabED_Andres.Models.mEstadist
+
+@{
+    ViewBag.Title = "Estadisticas";
+}
+<div class="row">
+    <div class="col-md-4">
+        <h2 style="color:blue">Estadisticas</h2>
+        <p><label style="color:black">Ingresados Infectados:  @Model.Ingres_infect</label> </p>
+        <p><label style="color:black">Ingresados Sospechosos: @Model.Ingres_sospech</label> </p>
+        <p><label style="color:black">Casos Activos:          @Model.Activos</label> </p>
+        <p><label style="color:black">Recuperados:            @Model.Recuperados</label> </p>
+        <p><label style="color:black">No infectados:          @Model.No_Infect</label> </p>
+    </div>
+    <div class="col-md-4">
+        </div>
+    <div class="col-md-4">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <button type="button" style="color:white; background-color:dimgray" onclick="location.href='@Url.Action("Index", "Home")'"><h4><b>Regresar al menú principal&raquo;</b></h4></button>
+    </div>
+    </div>
